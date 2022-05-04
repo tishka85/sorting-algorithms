@@ -4,8 +4,7 @@
 			<div class="flex-shrink-0 w-full sm:w-2/12 mb-4 sm:mb-0">
 				<Sidebar
 					:sorting-data="sortingData"
-					:selected-sort-types="selectedSortTypes"
-					@set-sort-toggle="setSortToggle"
+					:selected-sort-types.sync="selectedSortTypes"
 				/>
 			</div>
 			<div
@@ -83,26 +82,10 @@ export default class App extends Vue {
 		this.setInitialArr()
 	}
 
-	created(): void {
-		this.setSelectedAllSortTypes()
-	}
-
 	setInitialArr(): void {
 		const initialArr = Array.from(Array(MAX_VALUE).keys())
 		shuffle(initialArr)
 		this.initialArr = initialArr
-	}
-
-	setSelectedAllSortTypes(): void {
-		this.selectedSortTypes = Object.keys(this.sortingData) as Array<SortingType>
-	}
-
-	setSortToggle(sortingTypeToggle: SortingType): void {
-		if (!this.selectedSortTypes.includes(sortingTypeToggle)) {
-			this.selectedSortTypes.push(sortingTypeToggle)
-		} else if (this.selectedSortTypes.length > 1) {
-			this.selectedSortTypes = this.selectedSortTypes.filter(sortingType => sortingType !== sortingTypeToggle)
-		}
 	}
 }
 </script>
