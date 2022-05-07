@@ -1,8 +1,8 @@
-const MAX_VALUE = 120
+const CNT_ITEMS = 120
 
 const DISPLAY_HEIGHT = 270
 
 export {
-	MAX_VALUE,
+	CNT_ITEMS,
 	DISPLAY_HEIGHT,
 }

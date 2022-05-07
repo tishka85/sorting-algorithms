@@ -45,17 +45,13 @@ export default class Wrapper extends Vue {
 		this.time = 0
 		this.arrLocal = cloneDeep(initialArr)
 
-		const time = performance.now()
-
 		const timerId = setInterval(() => {
-			this.time += 100
-		}, 100)
+			this.time += 10
+		}, 10)
 
 		await this.sortMethod(this.arrLocal)
 
 		clearInterval(timerId)
-
-		this.time = performance.now() - time
 	}
 }
 </script>

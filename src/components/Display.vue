@@ -11,9 +11,9 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import { MAX_VALUE, DISPLAY_HEIGHT } from '@/utils/constants/sortingData'
+import { CNT_ITEMS, DISPLAY_HEIGHT } from '@/utils/constants/sortingData'
 
-const valueWidth = `${100 / MAX_VALUE}%`
+const valueWidth = `${100 / CNT_ITEMS}%`
 
 @Component
 export default class Display extends Vue {

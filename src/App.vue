@@ -28,10 +28,9 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import Sidebar from '@/components/Sidebar.vue'
-import { MAX_VALUE, DISPLAY_HEIGHT } from '@/utils/constants/sortingData'
+import { CNT_ITEMS, DISPLAY_HEIGHT } from '@/utils/constants/sortingData'
 import { SortingType } from '@/utils/enums'
 import Wrapper from '@/components/Wrapper.vue'
-import { shuffle } from '@/utils/methods/utility'
 import {
 	bubble, insertion, selection, quick,
 } from '@/utils/methods/sort'
@@ -64,7 +63,7 @@ export default class App extends Vue {
 	}
 
 	get valHeights(): Record<number, string> {
-		const divider = +(DISPLAY_HEIGHT / MAX_VALUE).toFixed(1)
+		const divider = +(DISPLAY_HEIGHT / Math.max(...this.initialArr)).toFixed(1)
 
 		return this.initialArr.reduce((result, val) => {
 			const resultLocal = result
@@ -83,8 +82,11 @@ export default class App extends Vue {
 	}
 
 	setInitialArr(): void {
-		const initialArr = Array.from(Array(MAX_VALUE).keys())
-		shuffle(initialArr)
+		const initialArr = []
+		for (let i = 0; i < CNT_ITEMS; i++) {
+			initialArr.push(1 + Math.random() * (CNT_ITEMS * 2 - 1))
+		}
+
 		this.initialArr = initialArr
 	}
 }
