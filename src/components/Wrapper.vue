@@ -40,18 +40,23 @@ export default class Wrapper extends Vue {
 
 	time = 0
 
+	timerId = 0
+
 	@Watch('initialArr', { immediate: true })
 	async onChangeInitialArr(initialArr: Array<number>): Promise<void> {
-		this.time = 0
 		this.arrLocal = cloneDeep(initialArr)
 
-		const timerId = setInterval(() => {
+		this.timerId = setInterval(() => {
 			this.time += 10
 		}, 10)
 
 		await this.sortMethod(this.arrLocal)
 
-		clearInterval(timerId)
+		clearInterval(this.timerId)
+	}
+
+	destroyed(): void {
+		clearInterval(this.timerId)
 	}
 }
 </script>

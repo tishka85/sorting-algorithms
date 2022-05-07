@@ -10,6 +10,7 @@
 			<div
 				v-if="initialArr.length"
 				class="flex-grow grid grid-cols-1 sm:grid-cols-2 gap-4 px-4"
+				:key="selectedSortTypes.length"
 			>
 				<Wrapper
 					v-for="sortType in selectedSortTypes"
