@@ -12,7 +12,7 @@
 				class="flex-grow grid grid-cols-1 sm:grid-cols-2 gap-4 px-4"
 				:key="selectedSortTypes.length"
 			>
-				<Wrapper
+				<SortWrapper
 					v-for="sortType in selectedSortTypes"
 					:key="sortType"
 					:initial-arr="initialArr"
@@ -29,9 +29,9 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import Sidebar from '@/components/Sidebar.vue'
-import { CNT_ITEMS, DISPLAY_HEIGHT } from '@/utils/constants/sortingData'
+import { CNT_ITEMS, DISPLAY_HEIGHT } from '@/utils/constants'
 import { SortingType } from '@/utils/enums'
-import Wrapper from '@/components/Wrapper.vue'
+import SortWrapper from '@/components/SortWrapper.vue'
 import {
 	bubble, insertion, selection, quick,
 } from '@/utils/methods/sort'
@@ -39,7 +39,7 @@ import { SortingData } from '@/utils/types'
 
 @Component({
 	components: {
-		Wrapper,
+		SortWrapper,
 		Sidebar,
 	},
 })

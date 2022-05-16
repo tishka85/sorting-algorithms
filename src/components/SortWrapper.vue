@@ -3,7 +3,7 @@
 		<div
 			class="text-lg font-bold border rounded-lg bg-gray-600 text-white mb-4"
 		>{{ sortTitle }}</div>
-		<Display
+		<SortDisplay
 			:initial-arr="arrLocal"
 			:val-heights="valHeights"
 			class="mb-4"
@@ -17,17 +17,17 @@ import {
 	Component, Vue, Prop, Watch,
 } from 'vue-property-decorator'
 import cloneDeep from 'lodash-es/cloneDeep'
-import Display from '@/components/Display.vue'
+import SortDisplay from '@/components/SortDisplay.vue'
 import Timer from '@/components/Timer.vue'
 import { SortingMethod } from '@/utils/types'
 
 @Component({
 	components: {
-		Display,
+		SortDisplay,
 		Timer,
 	},
 })
-export default class Wrapper extends Vue {
+export default class SortWrapper extends Vue {
 	@Prop({ required: true }) initialArr!: Array<number>
 
 	@Prop({ required: true }) sortTitle!: string

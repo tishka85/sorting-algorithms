@@ -11,12 +11,12 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import { CNT_ITEMS, DISPLAY_HEIGHT } from '@/utils/constants/sortingData'
+import { CNT_ITEMS, DISPLAY_HEIGHT } from '@/utils/constants'
 
 const valueWidth = `${100 / CNT_ITEMS}%`
 
 @Component
-export default class Display extends Vue {
+export default class SortDisplay extends Vue {
 	@Prop({ required: true }) initialArr!: Array<number>
 
 	@Prop({ required: true }) valHeights!: Record<number, string>
